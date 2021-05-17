@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Title | Tech insights</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Title" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://j143.github.io/tech-insights/2021/05/17/systemds-on-colaboratory.html" />
+<meta property="og:url" content="https://j143.github.io/tech-insights/2021/05/17/systemds-on-colaboratory.html" />
+<meta property="og:site_name" content="Tech insights" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-17T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","url":"https://j143.github.io/tech-insights/2021/05/17/systemds-on-colaboratory.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://j143.github.io/tech-insights/2021/05/17/systemds-on-colaboratory.html"},"headline":"Title","dateModified":"2021-05-17T00:00:00-05:00","datePublished":"2021-05-17T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/tech-insights/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://j143.github.io/tech-insights/feed.xml" title="Tech insights" /><link rel="shortcut icon" type="image/x-icon" href="/tech-insights/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/tech-insights/">Tech insights</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/tech-insights/about/">About Me</a><a class="page-link" href="/tech-insights/search/">Search</a><a class="page-link" href="/tech-insights/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Title</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-05-17T00:00:00-05:00" itemprop="datePublished">
+        May 17, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/j143/tech-blog/tree/master/_notebooks/2021-05-17-systemds-on-colaboratory.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/tech-insights/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/j143/tech-blog/master?filepath=_notebooks%2F2021-05-17-systemds-on-colaboratory.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/tech-insights/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/j143/tech-blog/blob/master/_notebooks/2021-05-17-systemds-on-colaboratory.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/tech-insights/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-05-17-systemds-on-colaboratory.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5>Copyright &copy; 2020 The Apache Software Foundation.</h5>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#-------------------------------------------------------------</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed to the Apache Software Foundation (ASF) under one</span>
+<span class="c1"># or more contributor license agreements.  See the NOTICE file</span>
+<span class="c1"># distributed with this work for additional information</span>
+<span class="c1"># regarding copyright ownership.  The ASF licenses this file</span>
+<span class="c1"># to you under the Apache License, Version 2.0 (the</span>
+<span class="c1"># &quot;License&quot;); you may not use this file except in compliance</span>
+<span class="c1"># with the License.  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing,</span>
+<span class="c1"># software distributed under the License is distributed on an</span>
+<span class="c1"># &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</span>
+<span class="c1"># KIND, either express or implied.  See the License for the</span>
+<span class="c1"># specific language governing permissions and limitations</span>
+<span class="c1"># under the License.</span>
+<span class="c1">#</span>
+<span class="c1">#-------------------------------------------------------------</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Developer-notebook-for-Apache-SystemDS">Developer notebook for Apache SystemDS<a class="anchor-link" href="#Developer-notebook-for-Apache-SystemDS"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Run this notebook online at <a href="https://colab.research.google.com/github/apache/systemds/blob/master/notebooks/systemds_dev.ipynb">Google Colab ↗</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This Jupyter/Colab-based tutorial will interactively walk through development setup and running SystemDS in both the</p>
+<p>A. standalone mode \
+B. with Apache Spark.</p>
+<p>Flow of the notebook:</p>
+<ol>
+<li>Download and Install the dependencies</li>
+<li>Go to section <strong>A</strong> or <strong>B</strong></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Download-and-Install-the-dependencies">Download and Install the dependencies<a class="anchor-link" href="#Download-and-Install-the-dependencies"> </a></h4><ol>
+<li><strong>Runtime:</strong> Java (OpenJDK 8 is preferred)</li>
+<li><strong>Build:</strong> Apache Maven</li>
+<li><strong>Backend:</strong> Apache Spark (optional)</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Setup">Setup<a class="anchor-link" href="#Setup"> </a></h5><p>A custom function to run OS commands.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
+  <span class="o">!{</span>command<span class="o">}</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Install-Java">Install Java<a class="anchor-link" href="#Install-Java"> </a></h5><p>Let us install OpenJDK 8. More about <a href="https://openjdk.java.net/install/">OpenJDK ↗</a>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>apt-get update
+<span class="o">!</span>apt-get install openjdk-8-jdk-headless -qq &gt; /dev/null
+
+<span class="c1"># run the below command to replace the existing installation</span>
+<span class="o">!</span>update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;JAVA_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/usr/lib/jvm/java-8-openjdk-amd64&quot;</span>
+
+<span class="o">!</span>java -version
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Install-Apache-Maven">Install Apache Maven<a class="anchor-link" href="#Install-Apache-Maven"> </a></h5><p>SystemDS uses Apache Maven to build and manage the project. More about <a href="http://maven.apache.org/">Apache Maven ↗</a>.</p>
+<p>Maven builds SystemDS using its project object model (POM) and a set of plugins. One would find <code>pom.xml</code> find the codebase!</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">maven_version</span> <span class="o">=</span> <span class="s1">&#39;apache-maven-3.6.3&#39;</span>
+<span class="n">maven_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/opt/</span><span class="si">{</span><span class="n">maven_version</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">maven_path</span><span class="p">):</span>
+  <span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;wget -q -nc -O apache-maven.zip https://downloads.apache.org/maven/maven-3/3.6.3/binaries/</span><span class="si">{</span><span class="n">maven_version</span><span class="si">}</span><span class="s2">-bin.zip&quot;</span><span class="p">)</span>
+  <span class="n">run</span><span class="p">(</span><span class="s1">&#39;unzip -q -d /opt apache-maven.zip&#39;</span><span class="p">)</span>
+  <span class="n">run</span><span class="p">(</span><span class="s1">&#39;rm -f apache-maven.zip&#39;</span><span class="p">)</span>
+
+<span class="c1"># Let&#39;s choose the absolute path instead of $PATH environment variable.</span>
+<span class="k">def</span> <span class="nf">maven</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+  <span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">maven_path</span><span class="si">}</span><span class="s2">/bin/mvn </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">maven</span><span class="p">(</span><span class="s1">&#39;-v&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Install-Apache-Spark-(Optional,-if-you-want-to-work-with-spark-backend)">Install Apache Spark (Optional, if you want to work with spark backend)<a class="anchor-link" href="#Install-Apache-Spark-(Optional,-if-you-want-to-work-with-spark-backend)"> </a></h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>NOTE: If spark is not downloaded. Let us make sure the version we are trying to download is officially supported at
+<a href="https://spark.apache.org/downloads.html">https://spark.apache.org/downloads.html</a></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spark_version</span> <span class="o">=</span> <span class="s1">&#39;spark-2.4.7&#39;</span>
+<span class="n">hadoop_version</span> <span class="o">=</span> <span class="s1">&#39;hadoop2.7&#39;</span>
+<span class="n">spark_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/opt/</span><span class="si">{</span><span class="n">spark_version</span><span class="si">}</span><span class="s2">-bin-</span><span class="si">{</span><span class="n">hadoop_version</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">spark_path</span><span class="p">):</span>
+  <span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;wget -q -nc -O apache-spark.tgz https://downloads.apache.org/spark/</span><span class="si">{</span><span class="n">spark_version</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">spark_version</span><span class="si">}</span><span class="s2">-bin-</span><span class="si">{</span><span class="n">hadoop_version</span><span class="si">}</span><span class="s2">.tgz&quot;</span><span class="p">)</span>
+  <span class="n">run</span><span class="p">(</span><span class="s1">&#39;tar zxfv apache-spark.tgz -C /opt&#39;</span><span class="p">)</span>
+  <span class="n">run</span><span class="p">(</span><span class="s1">&#39;rm -f apache-spark.tgz&#39;</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SPARK_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spark_path</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;:$SPARK_HOME/bin&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Get-Apache-SystemDS">Get Apache SystemDS<a class="anchor-link" href="#Get-Apache-SystemDS"> </a></h4><p>Apache SystemDS development happens on GitHub at <a href="https://github.com/apache/systemds">apache/systemds ↗</a></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git clone https://github.com/apache/systemds systemds --depth<span class="o">=</span><span class="m">1</span>
+<span class="o">%</span><span class="k">cd</span> systemds
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Build-the-project">Build the project<a class="anchor-link" href="#Build-the-project"> </a></h5>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Option 1: Build only the java codebase</span>
+<span class="n">maven</span><span class="p">(</span><span class="s1">&#39;clean package -q&#39;</span><span class="p">)</span>
+
+<span class="c1"># Option 2: For building along with python distribution</span>
+<span class="c1"># maven(&#39;clean package -P distribution&#39;)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="A.-Working-with-SystemDS-in-standalone-mode">A. Working with SystemDS in <strong>standalone</strong> mode<a class="anchor-link" href="#A.-Working-with-SystemDS-in-standalone-mode"> </a></h3><p>NOTE: Let's pay attention to <em>directories</em> and <em>relative paths</em>. :)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="1.-Set-SystemDS-environment-variables">1. Set SystemDS environment variables<a class="anchor-link" href="#1.-Set-SystemDS-environment-variables"> </a></h5><p>These are useful for the <code>./bin/systemds</code> script.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">export</span> <span class="nv">SYSTEMDS_ROOT</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+<span class="o">!</span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$SYSTEMDS_ROOT</span>/bin:<span class="nv">$PATH</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="2.-Download-Haberman-data">2. Download Haberman data<a class="anchor-link" href="#2.-Download-Haberman-data"> </a></h5><p>Data source: <a href="https://archive.ics.uci.edu/ml/datasets/Haberman&#39;s+Survival">https://archive.ics.uci.edu/ml/datasets/Haberman&#39;s+Survival</a></p>
+<p>About: The survival of patients who had undergone surgery for breast cancer.</p>
+<p>Data Attributes:</p>
+<ol>
+<li>Age of patient at time of operation (numerical)</li>
+<li>Patient's year of operation (year - 1900, numerical)</li>
+<li>Number of positive axillary nodes detected (numerical)</li>
+<li>Survival status (class attribute)<ul>
+<li>1 = the patient survived 5 years or longer</li>
+<li>2 = the patient died within 5 year</li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mkdir ../data
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>wget -P ../data/ https://web.archive.org/web/20200725014530/https://archive.ics.uci.edu/ml/machine-learning-databases/haberman/haberman.data
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Notice that the test is plain csv with no headers!</span>
+<span class="o">!</span>sed -n <span class="m">1</span>,10p ../data/haberman.data
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="2.1-Set-metadata-for-the-data">2.1 Set <code>metadata</code> for the data<a class="anchor-link" href="#2.1-Set-metadata-for-the-data"> </a></h5><p>The data does not have any info on the value types. So, <code>metadata</code> for the data
+helps know the size and format for the matrix data as <code>.mtd</code> file with the same
+name and location as <code>.data</code> file.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">echo</span> <span class="s1">&#39;{&quot;rows&quot;: 306, &quot;cols&quot;: 4, &quot;format&quot;: &quot;csv&quot;}&#39;</span> &gt; ../data/haberman.data.mtd
+
+<span class="c1"># generate type description for the data</span>
+<span class="o">!</span><span class="nb">echo</span> <span class="s1">&#39;1,1,1,2&#39;</span> &gt; ../data/types.csv
+<span class="o">!</span><span class="nb">echo</span> <span class="s1">&#39;{&quot;rows&quot;: 1, &quot;cols&quot;: 4, &quot;format&quot;: &quot;csv&quot;}&#39;</span> &gt; ../data/types.csv.mtd
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="3.-Find-the-algorithm-to-run-with-systemds">3. Find the algorithm to run with <code>systemds</code><a class="anchor-link" href="#3.-Find-the-algorithm-to-run-with-systemds"> </a></h5>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls scripts/algorithms
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Output the algorithm documentation</span>
+<span class="c1"># start from line no. 22 onwards. Till 35th line the command looks like</span>
+<span class="o">!</span>sed -n <span class="m">22</span>,35p ./scripts/algorithms/Univar-Stats.dml
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>./bin/systemds ./scripts/algorithms/Univar-Stats.dml -nvargs <span class="nv">X</span><span class="o">=</span>../data/haberman.data <span class="nv">TYPES</span><span class="o">=</span>../data/types.csv <span class="nv">STATS</span><span class="o">=</span>../data/univarOut.mtx <span class="nv">CONSOLE_OUTPUT</span><span class="o">=</span>TRUE
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="3.1-Let-us-inspect-the-output-data">3.1 Let us inspect the output data<a class="anchor-link" href="#3.1-Let-us-inspect-the-output-data"> </a></h5>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>sed -n <span class="m">1</span>,10p ../data/univarOut.mtx
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="B.-Run-SystemDS-with-Apache-Spark">B. Run SystemDS with Apache Spark<a class="anchor-link" href="#B.-Run-SystemDS-with-Apache-Spark"> </a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Playground-for-DML-scripts">Playground for DML scripts<a class="anchor-link" href="#Playground-for-DML-scripts"> </a></h4><p>DML - A custom language designed for SystemDS with R-like syntax.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="A-test-dml-script-to-prototype-algorithms">A test <code>dml</code> script to prototype algorithms<a class="anchor-link" href="#A-test-dml-script-to-prototype-algorithms"> </a></h5><p>Modify the code in the below cell and run to work develop data science tasks
+in a high level language.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> ../test.dml
+
+<span class="c1"># This code code acts as a playground for dml code</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">rand</span> <span class="p">(</span><span class="n">rows</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">X</span> <span class="o">%*%</span> <span class="n">rand</span><span class="p">(</span><span class="n">rows</span> <span class="o">=</span> <span class="n">ncol</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">cols</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">lm</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Submit the <code>dml</code> script to Spark with <code>spark-submit</code>.
+More about <a href="https://spark.apache.org/docs/latest/submitting-applications.html">Spark Submit ↗</a></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nv">$SPARK_HOME</span>/bin/spark-submit <span class="err">\</span>
+    <span class="o">./</span><span class="n">target</span><span class="o">/</span><span class="n">SystemDS</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">f</span> <span class="o">../</span><span class="n">test</span><span class="o">.</span><span class="n">dml</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Run-a-binary-classification-example-with-sample-data">Run a binary classification example with sample data<a class="anchor-link" href="#Run-a-binary-classification-example-with-sample-data"> </a></h5><p>One would notice that no other script than simple dml is used in this example completely.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># !$SPARK_HOME/bin/spark-submit ./target/SystemDS.jar -f ./scripts/nn/examples/fm-binclass-dummy-data.dml</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><a class="u-url" href="/tech-insights/2021/05/17/systemds-on-colaboratory.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-insights/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/tech-insights/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/tech-insights/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/tech-insights/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/tech-insights/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
