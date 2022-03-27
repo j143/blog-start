@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>AlphaFold Colab | Tech insights</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="AlphaFold Colab" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://j143.github.io/tech-insights/2022/03/27/AlphaFold.html" />
+<meta property="og:url" content="https://j143.github.io/tech-insights/2022/03/27/AlphaFold.html" />
+<meta property="og:site_name" content="Tech insights" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-27T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","url":"https://j143.github.io/tech-insights/2022/03/27/AlphaFold.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://j143.github.io/tech-insights/2022/03/27/AlphaFold.html"},"headline":"AlphaFold Colab","dateModified":"2022-03-27T00:00:00-05:00","datePublished":"2022-03-27T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/tech-insights/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://j143.github.io/tech-insights/feed.xml" title="Tech insights" /><link rel="shortcut icon" type="image/x-icon" href="/tech-insights/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/tech-insights/">Tech insights</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/tech-insights/about/">About Me</a><a class="page-link" href="/tech-insights/search/">Search</a><a class="page-link" href="/tech-insights/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">AlphaFold Colab</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-03-27T00:00:00-05:00" itemprop="datePublished">
+        Mar 27, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      16 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/j143/tech-blog/tree/master/_notebooks/2022-03-27-AlphaFold.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/tech-insights/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/j143/tech-blog/master?filepath=_notebooks%2F2022-03-27-AlphaFold.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/tech-insights/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/j143/tech-blog/blob/master/_notebooks/2022-03-27-AlphaFold.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/tech-insights/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-03-27-AlphaFold.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="c1">#@markdown Please execute this cell by pressing the _Play_ button </span>
+<span class="c1">#@markdown on the left to download and import third-party software </span>
+<span class="c1">#@markdown in this Colab notebook. (See the [acknowledgements](https://github.com/deepmind/alphafold/#acknowledgements) in our readme.)</span>
+
+<span class="c1">#@markdown **Note**: This installs the software on the Colab </span>
+<span class="c1">#@markdown notebook in the cloud and not on your computer.</span>
+
+<span class="kn">from</span> <span class="nn">IPython.utils</span> <span class="kn">import</span> <span class="n">io</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">tqdm.notebook</span>
+
+<span class="n">TQDM_BAR_FORMAT</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{l_bar}{bar}</span><span class="s1">| </span><span class="si">{n_fmt}</span><span class="s1">/</span><span class="si">{total_fmt}</span><span class="s1"> [elapsed: </span><span class="si">{elapsed}</span><span class="s1"> remaining: </span><span class="si">{remaining}</span><span class="s1">]&#39;</span>
+
+<span class="k">try</span><span class="p">:</span>
+  <span class="k">with</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">notebook</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">bar_format</span><span class="o">=</span><span class="n">TQDM_BAR_FORMAT</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">capture_output</span><span class="p">()</span> <span class="k">as</span> <span class="n">captured</span><span class="p">:</span>
+      <span class="c1"># Uninstall default Colab version of TF.</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">pip</span> <span class="n">uninstall</span> <span class="o">-</span><span class="n">y</span> <span class="n">tensorflow</span>
+
+      <span class="o">%</span><span class="n">shell</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="o">--</span><span class="n">quiet</span> <span class="o">--</span><span class="n">yes</span> <span class="n">hmmer</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+      <span class="c1"># Install py3dmol.</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">py3dmol</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+      <span class="c1"># Install OpenMM and pdbfixer.</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">P</span> <span class="o">/</span><span class="n">tmp</span> \
+        <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">anaconda</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span> \
+          <span class="o">&amp;&amp;</span> <span class="n">bash</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">b</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span> \
+          <span class="o">&amp;&amp;</span> <span class="n">rm</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+
+      <span class="n">PATH</span><span class="o">=%</span><span class="n">env</span> <span class="n">PATH</span>
+      <span class="o">%</span><span class="n">env</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="nb">bin</span><span class="p">:{</span><span class="n">PATH</span><span class="p">}</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">conda</span> <span class="n">update</span> <span class="o">-</span><span class="n">qy</span> <span class="n">conda</span> \
+          <span class="o">&amp;&amp;</span> <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">qy</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> \
+            <span class="n">python</span><span class="o">=</span><span class="mf">3.7</span> \
+            <span class="n">openmm</span><span class="o">=</span><span class="mf">7.5</span><span class="o">.</span><span class="mi">1</span> \
+            <span class="n">pdbfixer</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+
+      <span class="c1"># Create a ramdisk to store a database chunk to make Jackhmmer run fast.</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">m</span> <span class="mi">777</span> <span class="o">--</span><span class="n">parents</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ramdisk</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">sudo</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">tmpfs</span> <span class="o">-</span><span class="n">o</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="n">G</span> <span class="n">ramdisk</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ramdisk</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+      <span class="o">%</span><span class="n">shell</span> <span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">P</span> <span class="o">/</span><span class="n">content</span> \
+        <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">scicore</span><span class="o">.</span><span class="n">unibas</span><span class="o">.</span><span class="n">ch</span><span class="o">/</span><span class="n">schwede</span><span class="o">/</span><span class="n">openstructure</span><span class="o">/-/</span><span class="n">raw</span><span class="o">/</span><span class="mi">7102</span><span class="n">c63615b64735c4941278d92b554ec94415f8</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">mol</span><span class="o">/</span><span class="n">alg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">stereo_chemical_props</span><span class="o">.</span><span class="n">txt</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
+  <span class="k">raise</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="c1">#@markdown Please execute this cell by pressing the *Play* button on </span>
+<span class="c1">#@markdown the left.</span>
+
+<span class="n">GIT_REPO</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/deepmind/alphafold&#39;</span>
+
+<span class="n">SOURCE_URL</span> <span class="o">=</span> <span class="s1">&#39;https://storage.googleapis.com/alphafold/alphafold_params_colab_2021-10-27.tar&#39;</span>
+<span class="n">PARAMS_DIR</span> <span class="o">=</span> <span class="s1">&#39;./alphafold/data/params&#39;</span>
+<span class="n">PARAMS_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PARAMS_DIR</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">SOURCE_URL</span><span class="p">))</span>
+
+<span class="k">try</span><span class="p">:</span>
+  <span class="k">with</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">notebook</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">bar_format</span><span class="o">=</span><span class="n">TQDM_BAR_FORMAT</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">capture_output</span><span class="p">()</span> <span class="k">as</span> <span class="n">captured</span><span class="p">:</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">alphafold</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">branch</span> <span class="n">main</span> <span class="p">{</span><span class="n">GIT_REPO</span><span class="p">}</span> <span class="n">alphafold</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+      <span class="c1"># Install the required versions of all dependencies.</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="o">./</span><span class="n">alphafold</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+      <span class="c1"># Run setup.py to install only AlphaFold.</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">dependencies</span> <span class="o">./</span><span class="n">alphafold</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+      <span class="c1"># Apply OpenMM patch.</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">pushd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span> <span class="o">&amp;&amp;</span> \
+          <span class="n">patch</span> <span class="o">-</span><span class="n">p0</span> <span class="o">&lt;</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">alphafold</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">openmm</span><span class="o">.</span><span class="n">patch</span> <span class="o">&amp;&amp;</span> \
+          <span class="n">popd</span>
+
+      <span class="c1"># Make sure stereo_chemical_props.txt is in all locations where it could be searched for.</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">alphafold</span><span class="o">/</span><span class="n">alphafold</span><span class="o">/</span><span class="n">common</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">cp</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">stereo_chemical_props</span><span class="o">.</span><span class="n">txt</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">alphafold</span><span class="o">/</span><span class="n">alphafold</span><span class="o">/</span><span class="n">common</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">alphafold</span><span class="o">/</span><span class="n">common</span><span class="o">/</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">cp</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">stereo_chemical_props</span><span class="o">.</span><span class="n">txt</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">alphafold</span><span class="o">/</span><span class="n">common</span><span class="o">/</span>
+
+      <span class="o">%</span><span class="n">shell</span> <span class="n">mkdir</span> <span class="o">--</span><span class="n">parents</span> <span class="s2">&quot;</span><span class="si">{PARAMS_DIR}</span><span class="s2">&quot;</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="s2">&quot;</span><span class="si">{PARAMS_PATH}</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="si">{SOURCE_URL}</span><span class="s2">&quot;</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+
+      <span class="o">%</span><span class="n">shell</span> <span class="n">tar</span> <span class="o">--</span><span class="n">extract</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{PARAMS_PATH}</span><span class="s2">&quot;</span> \
+        <span class="o">--</span><span class="n">directory</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{PARAMS_DIR}</span><span class="s2">&quot;</span> <span class="o">--</span><span class="n">preserve</span><span class="o">-</span><span class="n">permissions</span>
+      <span class="o">%</span><span class="n">shell</span> <span class="n">rm</span> <span class="s2">&quot;</span><span class="si">{PARAMS_PATH}</span><span class="s2">&quot;</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
+  <span class="k">raise</span>
+
+<span class="kn">import</span> <span class="nn">jax</span>
+<span class="k">if</span> <span class="n">jax</span><span class="o">.</span><span class="n">local_devices</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;tpu&#39;</span><span class="p">:</span>
+  <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Colab TPU runtime not supported. Change it to GPU via Runtime -&gt; Change Runtime Type -&gt; Hardware accelerator -&gt; GPU.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">jax</span><span class="o">.</span><span class="n">local_devices</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;cpu&#39;</span><span class="p">:</span>
+  <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Colab CPU runtime not supported. Change it to GPU via Runtime -&gt; Change Runtime Type -&gt; Hardware accelerator -&gt; GPU.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Running with </span><span class="si">{</span><span class="n">jax</span><span class="o">.</span><span class="n">local_devices</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">device_kind</span><span class="si">}</span><span class="s1"> GPU&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make sure everything we need is on the path.</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/opt/conda/lib/python3.7/site-packages&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/content/alphafold&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make sure all necessary environment variables are set.</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TF_FORCE_UNIFIED_MEMORY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;XLA_PYTHON_CLIENT_MEM_FRACTION&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;2.0&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Making-a-prediction">Making a prediction<a class="anchor-link" href="#Making-a-prediction"> </a></h2><p>Please paste the sequence of your protein in the text box below, then run the remaining cells via <em>Runtime</em> &gt; <em>Run after</em>. You can also run the cells individually by pressing the <em>Play</em> button on the left.</p>
+<p>Note that the search against databases and the actual prediction can take some time, from minutes to hours, depending on the length of the protein and what type of GPU you are allocated by Colab (see FAQ below).</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="c1">#@markdown Enter the amino acid sequence(s) to fold:</span>
+<span class="c1">#@markdown * If you enter only a single sequence, the monomer model will be used.</span>
+<span class="c1">#@markdown * If you enter multiple sequences, the multimer model will be used.</span>
+
+<span class="kn">from</span> <span class="nn">alphafold.notebooks</span> <span class="kn">import</span> <span class="n">notebook_utils</span>
+
+<span class="n">sequence_1</span> <span class="o">=</span> <span class="s1">&#39;MAAHKGAEHHHKAAEHHEQAAKHHHAAAEHHEKGEHEQAAHHADTAYAHHKHAEEHAAQAAKHDAEHHAPKPH&#39;</span>  <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">sequence_2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">sequence_3</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">sequence_4</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">sequence_5</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">sequence_6</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">sequence_7</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">sequence_8</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1">#@param {type:&quot;string&quot;}</span>
+
+<span class="n">input_sequences</span> <span class="o">=</span> <span class="p">(</span><span class="n">sequence_1</span><span class="p">,</span> <span class="n">sequence_2</span><span class="p">,</span> <span class="n">sequence_3</span><span class="p">,</span> <span class="n">sequence_4</span><span class="p">,</span>
+                   <span class="n">sequence_5</span><span class="p">,</span> <span class="n">sequence_6</span><span class="p">,</span> <span class="n">sequence_7</span><span class="p">,</span> <span class="n">sequence_8</span><span class="p">)</span>
+
+<span class="c1">#@markdown If folding a complex target and all the input sequences are</span>
+<span class="c1">#@markdown prokaryotic then set `is_prokaryotic` to `True`. Set to `False`</span>
+<span class="c1">#@markdown otherwise or if the origin is unknown.</span>
+
+<span class="n">is_prokaryote</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1">#@param {type:&quot;boolean&quot;}</span>
+
+<span class="n">MIN_SINGLE_SEQUENCE_LENGTH</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">MAX_SINGLE_SEQUENCE_LENGTH</span> <span class="o">=</span> <span class="mi">2500</span>
+<span class="n">MAX_MULTIMER_LENGTH</span> <span class="o">=</span> <span class="mi">2500</span>
+
+<span class="c1"># Validate the input.</span>
+<span class="n">sequences</span><span class="p">,</span> <span class="n">model_type_to_use</span> <span class="o">=</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">validate_input</span><span class="p">(</span>
+    <span class="n">input_sequences</span><span class="o">=</span><span class="n">input_sequences</span><span class="p">,</span>
+    <span class="n">min_length</span><span class="o">=</span><span class="n">MIN_SINGLE_SEQUENCE_LENGTH</span><span class="p">,</span>
+    <span class="n">max_length</span><span class="o">=</span><span class="n">MAX_SINGLE_SEQUENCE_LENGTH</span><span class="p">,</span>
+    <span class="n">max_multimer_length</span><span class="o">=</span><span class="n">MAX_MULTIMER_LENGTH</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="c1">#@markdown Once this cell has been executed, you will see</span>
+<span class="c1">#@markdown statistics about the multiple sequence alignment </span>
+<span class="c1">#@markdown (MSA) that will be used by AlphaFold. In particular, </span>
+<span class="c1">#@markdown you’ll see how well each residue is covered by similar </span>
+<span class="c1">#@markdown sequences in the MSA.</span>
+
+<span class="c1"># --- Python imports ---</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">from</span> <span class="nn">concurrent</span> <span class="kn">import</span> <span class="n">futures</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">py3Dmol</span>
+
+<span class="kn">from</span> <span class="nn">alphafold.model</span> <span class="kn">import</span> <span class="n">model</span>
+<span class="kn">from</span> <span class="nn">alphafold.model</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">alphafold.model</span> <span class="kn">import</span> <span class="n">data</span>
+
+<span class="kn">from</span> <span class="nn">alphafold.data</span> <span class="kn">import</span> <span class="n">feature_processing</span>
+<span class="kn">from</span> <span class="nn">alphafold.data</span> <span class="kn">import</span> <span class="n">msa_pairing</span>
+<span class="kn">from</span> <span class="nn">alphafold.data</span> <span class="kn">import</span> <span class="n">parsers</span>
+<span class="kn">from</span> <span class="nn">alphafold.data</span> <span class="kn">import</span> <span class="n">pipeline</span>
+<span class="kn">from</span> <span class="nn">alphafold.data</span> <span class="kn">import</span> <span class="n">pipeline_multimer</span>
+<span class="kn">from</span> <span class="nn">alphafold.data.tools</span> <span class="kn">import</span> <span class="n">jackhmmer</span>
+
+<span class="kn">from</span> <span class="nn">alphafold.common</span> <span class="kn">import</span> <span class="n">protein</span>
+
+<span class="kn">from</span> <span class="nn">alphafold.relax</span> <span class="kn">import</span> <span class="n">relax</span>
+<span class="kn">from</span> <span class="nn">alphafold.relax</span> <span class="kn">import</span> <span class="n">utils</span>
+
+<span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">GridspecLayout</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Output</span>
+
+<span class="c1"># Color bands for visualizing plddt</span>
+<span class="n">PLDDT_BANDS</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;#FF7D45&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="s1">&#39;#FFDB13&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;#65CBF3&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;#0053D6&#39;</span><span class="p">)]</span>
+
+<span class="c1"># --- Find the closest source ---</span>
+<span class="n">test_url_pattern</span> <span class="o">=</span> <span class="s1">&#39;https://storage.googleapis.com/alphafold-colab</span><span class="si">{:s}</span><span class="s1">/latest/uniref90_2021_03.fasta.1&#39;</span>
+<span class="n">ex</span> <span class="o">=</span> <span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fetch</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+  <span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">test_url_pattern</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">source</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ex</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">fetch</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span> <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;-europe&#39;</span><span class="p">,</span> <span class="s1">&#39;-asia&#39;</span><span class="p">]]</span>
+<span class="n">source</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">futures</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">fs</span><span class="p">):</span>
+  <span class="n">source</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+  <span class="n">ex</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+  <span class="k">break</span>
+
+<span class="n">JACKHMMER_BINARY_PATH</span> <span class="o">=</span> <span class="s1">&#39;/usr/bin/jackhmmer&#39;</span>
+<span class="n">DB_ROOT_PATH</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://storage.googleapis.com/alphafold-colab</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">/latest/&#39;</span>
+<span class="c1"># The z_value is the number of sequences in a database.</span>
+<span class="n">MSA_DATABASES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;db_name&#39;</span><span class="p">:</span> <span class="s1">&#39;uniref90&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;db_path&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DB_ROOT_PATH</span><span class="si">}</span><span class="s1">uniref90_2021_03.fasta&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;num_streamed_chunks&#39;</span><span class="p">:</span> <span class="mi">59</span><span class="p">,</span>
+     <span class="s1">&#39;z_value&#39;</span><span class="p">:</span> <span class="mi">135_301_051</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;db_name&#39;</span><span class="p">:</span> <span class="s1">&#39;smallbfd&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;db_path&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DB_ROOT_PATH</span><span class="si">}</span><span class="s1">bfd-first_non_consensus_sequences.fasta&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;num_streamed_chunks&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span>
+     <span class="s1">&#39;z_value&#39;</span><span class="p">:</span> <span class="mi">65_984_053</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;db_name&#39;</span><span class="p">:</span> <span class="s1">&#39;mgnify&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;db_path&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DB_ROOT_PATH</span><span class="si">}</span><span class="s1">mgy_clusters_2019_05.fasta&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;num_streamed_chunks&#39;</span><span class="p">:</span> <span class="mi">71</span><span class="p">,</span>
+     <span class="s1">&#39;z_value&#39;</span><span class="p">:</span> <span class="mi">304_820_129</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="c1"># Search UniProt and construct the all_seq features only for heteromers, not homomers.</span>
+<span class="k">if</span> <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MULTIMER</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">sequences</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+  <span class="n">MSA_DATABASES</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+      <span class="c1"># Swiss-Prot and TrEMBL are concatenated together as UniProt.</span>
+      <span class="p">{</span><span class="s1">&#39;db_name&#39;</span><span class="p">:</span> <span class="s1">&#39;uniprot&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;db_path&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DB_ROOT_PATH</span><span class="si">}</span><span class="s1">uniprot_2021_03.fasta&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;num_streamed_chunks&#39;</span><span class="p">:</span> <span class="mi">98</span><span class="p">,</span>
+       <span class="s1">&#39;z_value&#39;</span><span class="p">:</span> <span class="mi">219_174_961</span> <span class="o">+</span> <span class="mi">565_254</span><span class="p">},</span>
+  <span class="p">])</span>
+
+<span class="n">TOTAL_JACKHMMER_CHUNKS</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;num_streamed_chunks&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">cfg</span> <span class="ow">in</span> <span class="n">MSA_DATABASES</span><span class="p">])</span>
+
+<span class="n">MAX_HITS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;uniref90&#39;</span><span class="p">:</span> <span class="mi">10_000</span><span class="p">,</span>
+    <span class="s1">&#39;smallbfd&#39;</span><span class="p">:</span> <span class="mi">5_000</span><span class="p">,</span>
+    <span class="s1">&#39;mgnify&#39;</span><span class="p">:</span> <span class="mi">501</span><span class="p">,</span>
+    <span class="s1">&#39;uniprot&#39;</span><span class="p">:</span> <span class="mi">50_000</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">get_msa</span><span class="p">(</span><span class="n">fasta_path</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Searches for MSA for the given sequence using chunked Jackhmmer search.&quot;&quot;&quot;</span>
+
+  <span class="c1"># Run the search against chunks of genetic databases (since the genetic</span>
+  <span class="c1"># databases don&#39;t fit in Colab disk).</span>
+  <span class="n">raw_msa_results</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+  <span class="k">with</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">notebook</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">TOTAL_JACKHMMER_CHUNKS</span><span class="p">,</span> <span class="n">bar_format</span><span class="o">=</span><span class="n">TQDM_BAR_FORMAT</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">jackhmmer_chunk_callback</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">db_config</span> <span class="ow">in</span> <span class="n">MSA_DATABASES</span><span class="p">:</span>
+      <span class="n">db_name</span> <span class="o">=</span> <span class="n">db_config</span><span class="p">[</span><span class="s1">&#39;db_name&#39;</span><span class="p">]</span>
+      <span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Searching </span><span class="si">{</span><span class="n">db_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="n">jackhmmer_runner</span> <span class="o">=</span> <span class="n">jackhmmer</span><span class="o">.</span><span class="n">Jackhmmer</span><span class="p">(</span>
+          <span class="n">binary_path</span><span class="o">=</span><span class="n">JACKHMMER_BINARY_PATH</span><span class="p">,</span>
+          <span class="n">database_path</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s1">&#39;db_path&#39;</span><span class="p">],</span>
+          <span class="n">get_tblout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">num_streamed_chunks</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s1">&#39;num_streamed_chunks&#39;</span><span class="p">],</span>
+          <span class="n">streaming_callback</span><span class="o">=</span><span class="n">jackhmmer_chunk_callback</span><span class="p">,</span>
+          <span class="n">z_value</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s1">&#39;z_value&#39;</span><span class="p">])</span>
+      <span class="c1"># Group the results by database name.</span>
+      <span class="n">raw_msa_results</span><span class="p">[</span><span class="n">db_name</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">jackhmmer_runner</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">fasta_path</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="n">raw_msa_results</span>
+
+
+<span class="n">features_for_chain</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">raw_msa_results_for_sequence</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">sequence_index</span><span class="p">,</span> <span class="n">sequence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Getting MSA for sequence </span><span class="si">{</span><span class="n">sequence_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+  <span class="n">fasta_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;target_</span><span class="si">{</span><span class="n">sequence_index</span><span class="si">}</span><span class="s1">.fasta&#39;</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fasta_path</span><span class="p">,</span> <span class="s1">&#39;wt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&gt;query</span><span class="se">\n</span><span class="si">{</span><span class="n">sequence</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+  <span class="c1"># Don&#39;t do redundant work for multiple copies of the same chain in the multimer.</span>
+  <span class="k">if</span> <span class="n">sequence</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">raw_msa_results_for_sequence</span><span class="p">:</span>
+    <span class="n">raw_msa_results</span> <span class="o">=</span> <span class="n">get_msa</span><span class="p">(</span><span class="n">fasta_path</span><span class="o">=</span><span class="n">fasta_path</span><span class="p">)</span>
+    <span class="n">raw_msa_results_for_sequence</span><span class="p">[</span><span class="n">sequence</span><span class="p">]</span> <span class="o">=</span> <span class="n">raw_msa_results</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">raw_msa_results</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">raw_msa_results_for_sequence</span><span class="p">[</span><span class="n">sequence</span><span class="p">])</span>
+
+  <span class="c1"># Extract the MSAs from the Stockholm files.</span>
+  <span class="c1"># NB: deduplication happens later in pipeline.make_msa_features.</span>
+  <span class="n">single_chain_msas</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">uniprot_msa</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">for</span> <span class="n">db_name</span><span class="p">,</span> <span class="n">db_results</span> <span class="ow">in</span> <span class="n">raw_msa_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">merged_msa</span> <span class="o">=</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">merge_chunked_msa</span><span class="p">(</span>
+        <span class="n">results</span><span class="o">=</span><span class="n">db_results</span><span class="p">,</span> <span class="n">max_hits</span><span class="o">=</span><span class="n">MAX_HITS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">db_name</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">merged_msa</span><span class="o">.</span><span class="n">sequences</span> <span class="ow">and</span> <span class="n">db_name</span> <span class="o">!=</span> <span class="s1">&#39;uniprot&#39;</span><span class="p">:</span>
+      <span class="n">single_chain_msas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">merged_msa</span><span class="p">)</span>
+      <span class="n">msa_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">merged_msa</span><span class="o">.</span><span class="n">sequences</span><span class="p">))</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">msa_size</span><span class="si">}</span><span class="s1"> unique sequences found in </span><span class="si">{</span><span class="n">db_name</span><span class="si">}</span><span class="s1"> for sequence </span><span class="si">{</span><span class="n">sequence_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">merged_msa</span><span class="o">.</span><span class="n">sequences</span> <span class="ow">and</span> <span class="n">db_name</span> <span class="o">==</span> <span class="s1">&#39;uniprot&#39;</span><span class="p">:</span>
+      <span class="n">uniprot_msa</span> <span class="o">=</span> <span class="n">merged_msa</span>
+
+  <span class="n">notebook_utils</span><span class="o">.</span><span class="n">show_msa_info</span><span class="p">(</span><span class="n">single_chain_msas</span><span class="o">=</span><span class="n">single_chain_msas</span><span class="p">,</span> <span class="n">sequence_index</span><span class="o">=</span><span class="n">sequence_index</span><span class="p">)</span>
+
+  <span class="c1"># Turn the raw data into model features.</span>
+  <span class="n">feature_dict</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">feature_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">make_sequence_features</span><span class="p">(</span>
+      <span class="n">sequence</span><span class="o">=</span><span class="n">sequence</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;query&#39;</span><span class="p">,</span> <span class="n">num_res</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)))</span>
+  <span class="n">feature_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">make_msa_features</span><span class="p">(</span><span class="n">msas</span><span class="o">=</span><span class="n">single_chain_msas</span><span class="p">))</span>
+  <span class="c1"># We don&#39;t use templates in AlphaFold Colab notebook, add only empty placeholder features.</span>
+  <span class="n">feature_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">notebook_utils</span><span class="o">.</span><span class="n">empty_placeholder_template_features</span><span class="p">(</span>
+      <span class="n">num_templates</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_res</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)))</span>
+
+  <span class="c1"># Construct the all_seq features only for heteromers, not homomers.</span>
+  <span class="k">if</span> <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MULTIMER</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">sequences</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">valid_feats</span> <span class="o">=</span> <span class="n">msa_pairing</span><span class="o">.</span><span class="n">MSA_FEATURES</span> <span class="o">+</span> <span class="p">(</span>
+        <span class="s1">&#39;msa_uniprot_accession_identifiers&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;msa_species_identifiers&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">all_seq_features</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">_all_seq&#39;</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">make_msa_features</span><span class="p">([</span><span class="n">uniprot_msa</span><span class="p">])</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">valid_feats</span><span class="p">}</span>
+    <span class="n">feature_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">all_seq_features</span><span class="p">)</span>
+
+  <span class="n">features_for_chain</span><span class="p">[</span><span class="n">protein</span><span class="o">.</span><span class="n">PDB_CHAIN_IDS</span><span class="p">[</span><span class="n">sequence_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">feature_dict</span>
+
+
+<span class="c1"># Do further feature post-processing depending on the model type.</span>
+<span class="k">if</span> <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MONOMER</span><span class="p">:</span>
+  <span class="n">np_example</span> <span class="o">=</span> <span class="n">features_for_chain</span><span class="p">[</span><span class="n">protein</span><span class="o">.</span><span class="n">PDB_CHAIN_IDS</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+<span class="k">elif</span> <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MULTIMER</span><span class="p">:</span>
+  <span class="n">all_chain_features</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">for</span> <span class="n">chain_id</span><span class="p">,</span> <span class="n">chain_features</span> <span class="ow">in</span> <span class="n">features_for_chain</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">all_chain_features</span><span class="p">[</span><span class="n">chain_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">pipeline_multimer</span><span class="o">.</span><span class="n">convert_monomer_features</span><span class="p">(</span>
+        <span class="n">chain_features</span><span class="p">,</span> <span class="n">chain_id</span><span class="p">)</span>
+
+  <span class="n">all_chain_features</span> <span class="o">=</span> <span class="n">pipeline_multimer</span><span class="o">.</span><span class="n">add_assembly_features</span><span class="p">(</span><span class="n">all_chain_features</span><span class="p">)</span>
+
+  <span class="n">np_example</span> <span class="o">=</span> <span class="n">feature_processing</span><span class="o">.</span><span class="n">pair_and_merge</span><span class="p">(</span>
+      <span class="n">all_chain_features</span><span class="o">=</span><span class="n">all_chain_features</span><span class="p">,</span> <span class="n">is_prokaryote</span><span class="o">=</span><span class="n">is_prokaryote</span><span class="p">)</span>
+
+  <span class="c1"># Pad MSA to avoid zero-sized extra_msa.</span>
+  <span class="n">np_example</span> <span class="o">=</span> <span class="n">pipeline_multimer</span><span class="o">.</span><span class="n">pad_msa</span><span class="p">(</span><span class="n">np_example</span><span class="p">,</span> <span class="n">min_num_seq</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="c1">#@markdown Once this cell has been executed, a zip-archive with</span>
+<span class="c1">#@markdown the obtained prediction will be automatically downloaded</span>
+<span class="c1">#@markdown to your computer.</span>
+
+<span class="c1">#@markdown In case you are having issues with the relaxation stage, you can disable it below.</span>
+<span class="c1">#@markdown Warning: This means that the prediction might have distracting</span>
+<span class="c1">#@markdown small stereochemical violations.</span>
+
+<span class="n">run_relax</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1">#@param {type:&quot;boolean&quot;}</span>
+
+<span class="c1"># --- Run the model ---</span>
+<span class="k">if</span> <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MONOMER</span><span class="p">:</span>
+  <span class="n">model_names</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">MODEL_PRESETS</span><span class="p">[</span><span class="s1">&#39;monomer&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;model_2_ptm&#39;</span><span class="p">,)</span>
+<span class="k">elif</span> <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MULTIMER</span><span class="p">:</span>
+  <span class="n">model_names</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">MODEL_PRESETS</span><span class="p">[</span><span class="s1">&#39;multimer&#39;</span><span class="p">]</span>
+
+<span class="n">output_dir</span> <span class="o">=</span> <span class="s1">&#39;prediction&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plddts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">ranking_confidences</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">pae_outputs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">unrelaxed_proteins</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">with</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">notebook</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">model_names</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bar_format</span><span class="o">=</span><span class="n">TQDM_BAR_FORMAT</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="n">model_names</span><span class="p">:</span>
+    <span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Running </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">model_config</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MONOMER</span><span class="p">:</span>
+      <span class="n">cfg</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">eval</span><span class="o">.</span><span class="n">num_ensemble</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MULTIMER</span><span class="p">:</span>
+      <span class="n">cfg</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">num_ensemble_eval</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_model_haiku_params</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="s1">&#39;./alphafold/data&#39;</span><span class="p">)</span>
+    <span class="n">model_runner</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">RunModel</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    <span class="n">processed_feature_dict</span> <span class="o">=</span> <span class="n">model_runner</span><span class="o">.</span><span class="n">process_features</span><span class="p">(</span><span class="n">np_example</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">model_runner</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">processed_feature_dict</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span><span class="p">))</span>
+
+    <span class="n">mean_plddt</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;plddt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MONOMER</span><span class="p">:</span>
+      <span class="k">if</span> <span class="s1">&#39;predicted_aligned_error&#39;</span> <span class="ow">in</span> <span class="n">prediction</span><span class="p">:</span>
+        <span class="n">pae_outputs</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;predicted_aligned_error&#39;</span><span class="p">],</span>
+                                   <span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;max_predicted_aligned_error&#39;</span><span class="p">])</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Monomer models are sorted by mean pLDDT. Do not put monomer pTM models here as they</span>
+        <span class="c1"># should never get selected.</span>
+        <span class="n">ranking_confidences</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;ranking_confidence&#39;</span><span class="p">]</span>
+        <span class="n">plddts</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;plddt&#39;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MULTIMER</span><span class="p">:</span>
+      <span class="c1"># Multimer models are sorted by pTM+ipTM.</span>
+      <span class="n">ranking_confidences</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;ranking_confidence&#39;</span><span class="p">]</span>
+      <span class="n">plddts</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;plddt&#39;</span><span class="p">]</span>
+      <span class="n">pae_outputs</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;predicted_aligned_error&#39;</span><span class="p">],</span>
+                                 <span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;max_predicted_aligned_error&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Set the b-factors to the per-residue plddt.</span>
+    <span class="n">final_atom_mask</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;structure_module&#39;</span><span class="p">][</span><span class="s1">&#39;final_atom_mask&#39;</span><span class="p">]</span>
+    <span class="n">b_factors</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;plddt&#39;</span><span class="p">][:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">final_atom_mask</span>
+    <span class="n">unrelaxed_protein</span> <span class="o">=</span> <span class="n">protein</span><span class="o">.</span><span class="n">from_prediction</span><span class="p">(</span>
+        <span class="n">processed_feature_dict</span><span class="p">,</span>
+        <span class="n">prediction</span><span class="p">,</span>
+        <span class="n">b_factors</span><span class="o">=</span><span class="n">b_factors</span><span class="p">,</span>
+        <span class="n">remove_leading_feature_dimension</span><span class="o">=</span><span class="p">(</span>
+            <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MONOMER</span><span class="p">))</span>
+    <span class="n">unrelaxed_proteins</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">unrelaxed_protein</span>
+
+    <span class="c1"># Delete unused outputs to save memory.</span>
+    <span class="k">del</span> <span class="n">model_runner</span>
+    <span class="k">del</span> <span class="n">params</span>
+    <span class="k">del</span> <span class="n">prediction</span>
+    <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="c1"># --- AMBER relax the best model ---</span>
+
+  <span class="c1"># Find the best model according to the mean pLDDT.</span>
+  <span class="n">best_model_name</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ranking_confidences</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">ranking_confidences</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+
+  <span class="k">if</span> <span class="n">run_relax</span><span class="p">:</span>
+    <span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;AMBER relaxation&#39;</span><span class="p">)</span>
+    <span class="n">amber_relaxer</span> <span class="o">=</span> <span class="n">relax</span><span class="o">.</span><span class="n">AmberRelaxation</span><span class="p">(</span>
+        <span class="n">max_iterations</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">tolerance</span><span class="o">=</span><span class="mf">2.39</span><span class="p">,</span>
+        <span class="n">stiffness</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
+        <span class="n">exclude_residues</span><span class="o">=</span><span class="p">[],</span>
+        <span class="n">max_outer_iterations</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">relaxed_pdb</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">amber_relaxer</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">prot</span><span class="o">=</span><span class="n">unrelaxed_proteins</span><span class="p">[</span><span class="n">best_model_name</span><span class="p">])</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning: Running without the relaxation stage.&#39;</span><span class="p">)</span>
+    <span class="n">relaxed_pdb</span> <span class="o">=</span> <span class="n">protein</span><span class="o">.</span><span class="n">to_pdb</span><span class="p">(</span><span class="n">unrelaxed_proteins</span><span class="p">[</span><span class="n">best_model_name</span><span class="p">])</span>
+  <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Finished AMBER relax.</span>
+
+<span class="c1"># Construct multiclass b-factors to indicate confidence bands</span>
+<span class="c1"># 0=very low, 1=low, 2=confident, 3=very high</span>
+<span class="n">banded_b_factors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">plddt</span> <span class="ow">in</span> <span class="n">plddts</span><span class="p">[</span><span class="n">best_model_name</span><span class="p">]:</span>
+  <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">PLDDT_BANDS</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">plddt</span> <span class="o">&gt;=</span> <span class="n">min_val</span> <span class="ow">and</span> <span class="n">plddt</span> <span class="o">&lt;=</span> <span class="n">max_val</span><span class="p">:</span>
+      <span class="n">banded_b_factors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+      <span class="k">break</span>
+<span class="n">banded_b_factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">banded_b_factors</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">final_atom_mask</span>
+<span class="n">to_visualize_pdb</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">overwrite_b_factors</span><span class="p">(</span><span class="n">relaxed_pdb</span><span class="p">,</span> <span class="n">banded_b_factors</span><span class="p">)</span>
+
+
+<span class="c1"># Write out the prediction</span>
+<span class="n">pred_output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s1">&#39;selected_prediction.pdb&#39;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pred_output_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">relaxed_pdb</span><span class="p">)</span>
+
+
+<span class="c1"># --- Visualise the prediction &amp; confidence ---</span>
+<span class="n">show_sidechains</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">def</span> <span class="nf">plot_plddt_legend</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Plots the legend for pLDDT.&quot;&quot;&quot;</span>
+  <span class="n">thresh</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Very low (pLDDT &lt; 50)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Low (70 &gt; pLDDT &gt; 50)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Confident (90 &gt; pLDDT &gt; 70)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Very high (pLDDT &gt; 90)&#39;</span><span class="p">]</span>
+
+  <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">PLDDT_BANDS</span><span class="p">]</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">thresh</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+  <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Model Confidence&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">plt</span>
+
+<span class="c1"># Show the structure coloured by chain if the multimer model has been used.</span>
+<span class="k">if</span> <span class="n">model_type_to_use</span> <span class="o">==</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">ModelType</span><span class="o">.</span><span class="n">MULTIMER</span><span class="p">:</span>
+  <span class="n">multichain_view</span> <span class="o">=</span> <span class="n">py3Dmol</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+  <span class="n">multichain_view</span><span class="o">.</span><span class="n">addModelsAsFrames</span><span class="p">(</span><span class="n">to_visualize_pdb</span><span class="p">)</span>
+  <span class="n">multichain_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cartoon&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;colorscheme&#39;</span><span class="p">:</span> <span class="s1">&#39;chain&#39;</span><span class="p">}}</span>
+  <span class="n">multichain_view</span><span class="o">.</span><span class="n">setStyle</span><span class="p">({</span><span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">},</span> <span class="n">multichain_style</span><span class="p">)</span>
+  <span class="n">multichain_view</span><span class="o">.</span><span class="n">zoomTo</span><span class="p">()</span>
+  <span class="n">multichain_view</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Color the structure by per-residue pLDDT</span>
+<span class="n">color_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">bands</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bands</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">PLDDT_BANDS</span><span class="p">)}</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">py3Dmol</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">addModelsAsFrames</span><span class="p">(</span><span class="n">to_visualize_pdb</span><span class="p">)</span>
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cartoon&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;colorscheme&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;prop&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;map&#39;</span><span class="p">:</span> <span class="n">color_map</span><span class="p">}}}</span>
+<span class="k">if</span> <span class="n">show_sidechains</span><span class="p">:</span>
+  <span class="n">style</span><span class="p">[</span><span class="s1">&#39;stick&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">view</span><span class="o">.</span><span class="n">setStyle</span><span class="p">({</span><span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">},</span> <span class="n">style</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">zoomTo</span><span class="p">()</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridspecLayout</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">Output</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">out</span><span class="p">:</span>
+  <span class="n">view</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">Output</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">out</span><span class="p">:</span>
+  <span class="n">plot_plddt_legend</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span>
+
+<span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+
+<span class="c1"># Display pLDDT and predicted aligned error (if output by the model).</span>
+<span class="k">if</span> <span class="n">pae_outputs</span><span class="p">:</span>
+  <span class="n">num_plots</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="n">num_plots</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span> <span class="o">*</span> <span class="n">num_plots</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_plots</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plddts</span><span class="p">[</span><span class="n">best_model_name</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predicted LDDT&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Residue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;pLDDT&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">num_plots</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="n">pae</span><span class="p">,</span> <span class="n">max_pae</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pae_outputs</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pae</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">max_pae</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens_r&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+  <span class="c1"># Display lines at chain boundaries.</span>
+  <span class="n">best_unrelaxed_prot</span> <span class="o">=</span> <span class="n">unrelaxed_proteins</span><span class="p">[</span><span class="n">best_model_name</span><span class="p">]</span>
+  <span class="n">total_num_res</span> <span class="o">=</span> <span class="n">best_unrelaxed_prot</span><span class="o">.</span><span class="n">residue_index</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">chain_ids</span> <span class="o">=</span> <span class="n">best_unrelaxed_prot</span><span class="o">.</span><span class="n">chain_index</span>
+  <span class="k">for</span> <span class="n">chain_boundary</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">chain_ids</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">chain_ids</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+    <span class="k">if</span> <span class="n">chain_boundary</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+      <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">total_num_res</span><span class="p">],</span> <span class="p">[</span><span class="n">chain_boundary</span><span class="p">,</span> <span class="n">chain_boundary</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+      <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">chain_boundary</span><span class="p">,</span> <span class="n">chain_boundary</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">total_num_res</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predicted Aligned Error&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Scored residue&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Aligned residue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Save the predicted aligned error (if it exists).</span>
+<span class="n">pae_output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s1">&#39;predicted_aligned_error.json&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">pae_outputs</span><span class="p">:</span>
+  <span class="c1"># Save predicted aligned error in the same format as the AF EMBL DB.</span>
+  <span class="n">pae_data</span> <span class="o">=</span> <span class="n">notebook_utils</span><span class="o">.</span><span class="n">get_pae_json</span><span class="p">(</span><span class="n">pae</span><span class="o">=</span><span class="n">pae</span><span class="p">,</span> <span class="n">max_pae</span><span class="o">=</span><span class="n">max_pae</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pae_output_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pae_data</span><span class="p">)</span>
+
+<span class="c1"># --- Download the predictions ---</span>
+<span class="err">!</span><span class="nb">zip</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">r</span> <span class="p">{</span><span class="n">output_dir</span><span class="p">}</span><span class="o">.</span><span class="n">zip</span> <span class="p">{</span><span class="n">output_dir</span><span class="p">}</span>
+<span class="n">files</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">.zip&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Interpreting-the-prediction">Interpreting the prediction<a class="anchor-link" href="#Interpreting-the-prediction"> </a></h3><p>In general predicted LDDT (pLDDT) is best used for intra-domain confidence, whereas Predicted Aligned Error (PAE) is best used for determining between domain or between chain confidence.</p>
+<p>Please see the <a href="https://www.nature.com/articles/s41586-021-03819-2">AlphaFold methods paper</a>, the <a href="https://www.nature.com/articles/s41586-021-03828-1">AlphaFold predictions of the human proteome paper</a>, and the <a href="https://www.biorxiv.org/content/10.1101/2021.10.04.463034v1">AlphaFold-Multimer paper</a> as well as <a href="https://alphafold.ebi.ac.uk/faq">our FAQ</a> on how to interpret AlphaFold predictions.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="FAQ-&amp;-Troubleshooting">FAQ &amp; Troubleshooting<a class="anchor-link" href="#FAQ-&amp;-Troubleshooting"> </a></h2><ul>
+<li>How do I get a predicted protein structure for my protein?<ul>
+<li>Click on the <em>Connect</em> button on the top right to get started.</li>
+<li>Paste the amino acid sequence of your protein (without any headers) into the “Enter the amino acid sequence to fold”.</li>
+<li>Run all cells in the Colab, either by running them individually (with the play button on the left side) or via <em>Runtime</em> &gt; <em>Run all.</em></li>
+<li>The predicted protein structure will be downloaded once all cells have been executed. Note: This can take minutes to hours - see below.</li>
+</ul>
+</li>
+<li>How long will this take?<ul>
+<li>Downloading the AlphaFold source code can take up to a few minutes.</li>
+<li>Downloading and installing the third-party software can take up to a few minutes.</li>
+<li>The search against genetic databases can take minutes to hours.</li>
+<li>Running AlphaFold and generating the prediction can take minutes to hours, depending on the length of your protein and on which GPU-type Colab has assigned you.</li>
+</ul>
+</li>
+<li>My Colab no longer seems to be doing anything, what should I do?<ul>
+<li>Some steps may take minutes to hours to complete.</li>
+<li>If nothing happens or if you receive an error message, try restarting your Colab runtime via <em>Runtime</em> &gt; <em>Restart runtime</em>.</li>
+<li>If this doesn’t help, try resetting your Colab runtime via <em>Runtime</em> &gt; <em>Factory reset runtime</em>.</li>
+</ul>
+</li>
+<li>How does this compare to the open-source version of AlphaFold?<ul>
+<li>This Colab version of AlphaFold searches a selected portion of the BFD dataset and currently doesn’t use templates, so its accuracy is reduced in comparison to the full version of AlphaFold that is described in the <a href="https://doi.org/10.1038/s41586-021-03819-2">AlphaFold paper</a> and <a href="https://github.com/deepmind/alphafold/">Github repo</a> (the full version is available via the inference script).</li>
+</ul>
+</li>
+<li>What is a Colab?<ul>
+<li>See the <a href="https://research.google.com/colaboratory/faq.html">Colab FAQ</a>.</li>
+</ul>
+</li>
+<li>I received a warning “Notebook requires high RAM”, what do I do?<ul>
+<li>The resources allocated to your Colab vary. See the <a href="https://research.google.com/colaboratory/faq.html">Colab FAQ</a> for more details.</li>
+<li>You can execute the Colab nonetheless.</li>
+</ul>
+</li>
+<li>I received an error “Colab CPU runtime not supported” or “No GPU/TPU found”, what do I do?<ul>
+<li>Colab CPU runtime is not supported. Try changing your runtime via <em>Runtime</em> &gt; <em>Change runtime type</em> &gt; <em>Hardware accelerator</em> &gt; <em>GPU</em>.</li>
+<li>The type of GPU allocated to your Colab varies. See the <a href="https://research.google.com/colaboratory/faq.html">Colab FAQ</a> for more details.</li>
+<li>If you receive “Cannot connect to GPU backend”, you can try again later to see if Colab allocates you a GPU.</li>
+<li><a href="https://colab.research.google.com/signup">Colab Pro</a> offers priority access to GPUs.</li>
+</ul>
+</li>
+<li>I received an error “ModuleNotFoundError: No module named ...”, even though I ran the cell that imports it, what do I do?<ul>
+<li>Colab notebooks on the free tier time out after a certain amount of time. See the <a href="https://research.google.com/colaboratory/faq.html#idle-timeouts">Colab FAQ</a>. Try rerunning the whole notebook from the beginning.</li>
+</ul>
+</li>
+<li>Does this tool install anything on my computer?<ul>
+<li>No, everything happens in the cloud on Google Colab.</li>
+<li>At the end of the Colab execution a zip-archive with the obtained prediction will be automatically downloaded to your computer.</li>
+</ul>
+</li>
+<li>How should I share feedback and bug reports?<ul>
+<li>Please share any feedback and bug reports as an <a href="https://github.com/deepmind/alphafold/issues">issue</a> on Github.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Related-work">Related work<a class="anchor-link" href="#Related-work"> </a></h2><p>Take a look at these Colab notebooks provided by the community (please note that these notebooks may vary from our validated AlphaFold system and we cannot guarantee their accuracy):</p>
+<ul>
+<li>The <a href="https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb">ColabFold AlphaFold2 notebook</a> by Sergey Ovchinnikov, Milot Mirdita and Martin Steinegger, which uses an API hosted at the Södinglab based on the MMseqs2 server (<a href="https://academic.oup.com/bioinformatics/article/35/16/2856/5280135">Mirdita et al. 2019, Bioinformatics</a>) for the multiple sequence alignment creation.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="License-and-Disclaimer">License and Disclaimer<a class="anchor-link" href="#License-and-Disclaimer"> </a></h1><p>This is not an officially-supported Google product.</p>
+<p>This Colab notebook and other information provided is for theoretical modelling only, caution should be exercised in its use. It is provided ‘as-is’ without any warranty of any kind, whether expressed or implied. Information is not intended to be a substitute for professional medical advice, diagnosis, or treatment, and does not constitute medical or other professional advice.</p>
+<p>Copyright 2021 DeepMind Technologies Limited.</p>
+<h2 id="AlphaFold-Code-License">AlphaFold Code License<a class="anchor-link" href="#AlphaFold-Code-License"> </a></h2><p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at <a href="https://www.apache.org/licenses/LICENSE-2.0">https://www.apache.org/licenses/LICENSE-2.0</a>.</p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<h2 id="Model-Parameters-License">Model Parameters License<a class="anchor-link" href="#Model-Parameters-License"> </a></h2><p>The AlphaFold parameters are made available for non-commercial use only, under the terms of the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license. You can find details at: <a href="https://creativecommons.org/licenses/by-nc/4.0/legalcode">https://creativecommons.org/licenses/by-nc/4.0/legalcode</a></p>
+<h2 id="Third-party-software">Third-party software<a class="anchor-link" href="#Third-party-software"> </a></h2><p>Use of the third-party software, libraries or code referred to in the <a href="https://github.com/deepmind/alphafold/#acknowledgements">Acknowledgements section</a> in the AlphaFold README may be governed by separate terms and conditions or license provisions. Your use of the third-party software, libraries or code is subject to any such terms and you should check that you can comply with any applicable restrictions or terms and conditions before use.</p>
+<h2 id="Mirrored-Databases">Mirrored Databases<a class="anchor-link" href="#Mirrored-Databases"> </a></h2><p>The following databases have been mirrored by DeepMind, and are available with reference to the following:</p>
+<ul>
+<li>UniProt: v2021_03 (unmodified), by The UniProt Consortium, available under a <a href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>.</li>
+<li>UniRef90: v2021_03 (unmodified), by The UniProt Consortium, available under a <a href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>.</li>
+<li>MGnify: v2019_05 (unmodified), by Mitchell AL et al., available free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</a>.</li>
+<li>BFD: (modified), by Steinegger M. and Söding J., modified by DeepMind, available under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. See the Methods section of the <a href="https://www.nature.com/articles/s41586-021-03828-1">AlphaFold proteome paper</a> for details.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/tech-insights/2022/03/27/AlphaFold.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-insights/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/tech-insights/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/tech-insights/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/tech-insights/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/tech-insights/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
